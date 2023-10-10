@@ -120,7 +120,24 @@ screen say(who, what):
 ## Делает namebox доступным для стилизации через объект Character.
 init python:
     config.character_id_prefixes.append('namebox')
+    g=Gallery()
 
+    g.locked_button = "images/poster/mini/zamok.jpg"
+
+    g.button("ending1")
+    g.condition("persistent.ending1")
+    g.image("poster happy end")
+
+    g.button("ending2")
+    g.condition("persistent.ending2")
+    g.image("poster past")
+
+    g.button("ending3")
+    g.condition("persistent.ending3")
+    g.image("poster mogila")
+
+    onn = ImageDissolve("eye.png", 3.0, 20, reverse=False)
+    off = ImageDissolve("eye.png", 3.0, 20, reverse=True)
 style window is default
 style say_label is default
 style say_dialogue is default
@@ -204,8 +221,15 @@ style input:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
+screen timerz:
+    timer 0.05 repeat True action If(timez>0, SetVariable('timez', timez-0.69), Jump(marker))
+    bar value timez range time_range xalign .5 xmaximum 300
+
 screen choice(items):
     style_prefix "choice"
+
+    if menu_timer_onoff==True:
+        use timerz
 
     vbox:
         for i in items:
@@ -243,7 +267,7 @@ style choice_button_text is default:
 screen quick_menu():
 
     ## Гарантирует, что оно появляется поверх других экранов.
-    zorder 100
+    zorder 50
 
     if quick_menu:
 
@@ -265,8 +289,8 @@ screen quick_menu():
 
 ## Данный код гарантирует, что экран быстрого меню будет показан в игре в любое
 ## время, если только игрок не скроет интерфейс.
-init python:
-    config.overlay_screens.append("quick_menu")
+#init python:
+    #config.overlay_screens.append("quick_menu")
 
 default quick_menu = True
 
@@ -313,6 +337,8 @@ screen navigation():
 
         textbutton _("Настройки") action ShowMenu("preferences")
 
+        textbutton _("Галерея") action ShowMenu("gallery")
+
         if _in_replay:
 
             textbutton _("Завершить повтор") action EndReplay(confirm=True)
@@ -358,26 +384,37 @@ screen main_menu():
     ## заменять этот.
     tag menu
 
-    add gui.main_menu_background
+    imagemap:
+        ground "gui/main_menu.png"
+        idle "gui/menu_normal.png"
+        hover "gui/menu_hover.png"
 
-    ## Эта пустая рамка затеняет главное меню.
-    frame:
-        style "main_menu_frame"
+        hotspot(40, 220, 160, 50) action Start()
+        hotspot(36, 270, 217, 53) action ShowMenu("load")
+        hotspot(35, 325, 225, 51) action ShowMenu("preferences")
+        hotspot(30, 377, 174, 61) action ShowMenu("gallery")
+        hotspot(33, 430, 170, 57) action ShowMenu("about")
+        hotspot(35, 490, 172, 48) action ShowMenu("help")
+        hotspot(40, 540, 140, 53) action Quit(confirm=True)
 
-    ## Оператор use включает отображение другого экрана в данном. Актуальное
-    ## содержание главного меню находится на экране навигации.
-    use navigation
+screen gallery():
+    tag menu
+    add "gui/game_menu_temno.png"
 
-    if gui.show_name:
+    grid 3 2:
+        xfill True
+        yfill True
 
-        vbox:
-            style "main_menu_vbox"
+        add g.make_button("ending1", "posterm happy end", xalign=0.5, yalign=0.5, hover_border="images/poster/mini/ramka.png")
+        add g.make_button("ending2", "posterm past", xalign=0.5, yalign=0.5, hover_border="images/poster/mini/ramka.png")
+        add g.make_button("ending3", "posterm mogila", xalign=0.5, yalign=0.5, hover_border="images/poster/mini/ramka.png")
+        null
+        null
+        null
 
-            text "[config.name!t]":
-                style "main_menu_title"
+    textbutton "Назад" text_color "#0f0f0f" text_hover_color "#cdac65" action Return() xalign 0.5 yalign 0.95
 
-            text "[config.version]":
-                style "main_menu_version"
+
 
 
 style main_menu_frame is empty

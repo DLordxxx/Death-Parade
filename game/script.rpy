@@ -7,6 +7,14 @@ init:
 init-1:
     $ menu_timer_onoff=False
 
+# Заставка
+label splashscreen:
+    screen black
+    scene zastavka1 with fade
+    pause(2)
+    scene black with fade
+    return
+    
 # Игра начинается здесь:
 label start:
 
