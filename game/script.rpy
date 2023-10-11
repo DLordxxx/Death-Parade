@@ -22,8 +22,3 @@ label start:
     stop music fadeout 1
     scene bg test
     with fade
-    '''
-    ТЕСТОВОЕ СООБЩЕНИЕ
-    '''
-
-    return
