@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 38: expected menuitem
+    jump final1
+    ^
+
+Ren'Py Version: Ren'Py 7.4.11.2266
+Thu Oct 12 01:35:19 2023
