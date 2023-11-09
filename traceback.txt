@@ -1,74 +1,102 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'images/poster/mini/ramka.png'>:
-IOError: Couldn't find file 'images/poster/mini/ramka.png'.
+After initialization, but before game start.
+  File "game/screens.rpy", line 751, in prepare_screen
+    screen preferences():
+  File "game/screens.rpy", line 751, in prepare
+    screen preferences():
+  File "game/screens.rpy", line 755, in prepare
+    use game_menu(_("Настройки"), scroll="viewport"):
+  File "game/screens.rpy", line 755, in prepare
+    use game_menu(_("Настройки"), scroll="viewport"):
+  File "game/screens.rpy", line 757, in prepare
+    vbox:
+  File "game/screens.rpy", line 757, in prepare
+    vbox:
+  File "game/screens.rpy", line 789, in prepare
+    hbox:
+  File "game/screens.rpy", line 789, in prepare
+    hbox:
+  File "game/screens.rpy", line 803, in prepare
+    vbox:
+  File "game/screens.rpy", line 803, in prepare
+    vbox:
+  File "game/screens.rpy", line 805, in prepare
+    if config.has_music:
+  File "game/screens.rpy", line 805, in prepare
+    if config.has_music:
+  File "game/screens.rpy", line 808, in prepare
+    hbox:
+  File "game/screens.rpy", line 808, in prepare
+    hbox:
+  File "game/screens.rpy", line 809, in prepare
+    bar value Preference("music volume")
+  File "game/screens.rpy", line 809, in prepare
+    bar value Preference("music volume")
+  File "game/screens.rpy", line 809, in <module>
+    bar value Preference("music volume")
+  File "renpy/common/00preferences.rpy", line 553, in Preference
+    rv = get()
+  File "renpy/common/00preferences.rpy", line 523, in get
+    if len(n) == 3 and n[0] == "mixer":
+Exception: Character expects its what argument to be a string, got [u'music', u'volume'].
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
-    python hide:
-  File "renpy/ast.py", line 928, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "renpy/python.py", line 2245, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
-    python hide:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
-    ui.interact()
-  File "renpy/ui.py", line 298, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "renpy/display/core.py", line 3325, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "renpy/display/core.py", line 3839, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "renpy/display/core.py", line 2565, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 492, in renpy.display.render.render_screen
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/transition.py", line 360, in render
-    return render(self.new_widget, width, height, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/screen.py", line 688, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 493, in render
-    renders = [ render(i, renwidth, renheight, st, at) for i in children ]
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/behavior.py", line 795, in render
-    rv = super(Button, self).render(width, height, st, at)
-  File "renpy/display/layout.py", line 1310, in render
-    back = render(style.foreground, bw, bh, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/im.py", line 625, in render
-    return cache.get(self, render=True)
-  File "renpy/display/im.py", line 287, in get
-    surf = image.load()
-  File "renpy/display/im.py", line 706, in load
-    raise e
-IOError: Couldn't find file 'images/poster/mini/ramka.png'.
+  File "renpy/bootstrap.py", line 331, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 662, in main
+    run(restart)
+  File "renpy/main.py", line 97, in run
+    renpy.display.screen.prepare_screens()
+  File "renpy/display/screen.py", line 955, in prepare_screens
+    s.ast.prepare_screen()
+  File "game/screens.rpy", line 751, in prepare_screen
+    screen preferences():
+  File "game/screens.rpy", line 751, in prepare
+    screen preferences():
+  File "game/screens.rpy", line 755, in prepare
+    use game_menu(_("Настройки"), scroll="viewport"):
+  File "game/screens.rpy", line 755, in prepare
+    use game_menu(_("Настройки"), scroll="viewport"):
+  File "game/screens.rpy", line 757, in prepare
+    vbox:
+  File "game/screens.rpy", line 757, in prepare
+    vbox:
+  File "game/screens.rpy", line 789, in prepare
+    hbox:
+  File "game/screens.rpy", line 789, in prepare
+    hbox:
+  File "game/screens.rpy", line 803, in prepare
+    vbox:
+  File "game/screens.rpy", line 803, in prepare
+    vbox:
+  File "game/screens.rpy", line 805, in prepare
+    if config.has_music:
+  File "game/screens.rpy", line 805, in prepare
+    if config.has_music:
+  File "game/screens.rpy", line 808, in prepare
+    hbox:
+  File "game/screens.rpy", line 808, in prepare
+    hbox:
+  File "game/screens.rpy", line 809, in prepare
+    bar value Preference("music volume")
+  File "game/screens.rpy", line 809, in prepare
+    bar value Preference("music volume")
+  File "renpy/python.py", line 2269, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/screens.rpy", line 809, in <module>
+    bar value Preference("music volume")
+  File "renpy/common/00preferences.rpy", line 553, in Preference
+    rv = get()
+  File "renpy/common/00preferences.rpy", line 523, in get
+    if len(n) == 3 and n[0] == "mixer":
+  File "renpy/character.py", line 1170, in __call__
+    raise Exception("Character expects its what argument to be a string, got %r." % (what,))
+Exception: Character expects its what argument to be a string, got [u'music', u'volume'].
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 Death Parade 1.0
-Tue Oct 10 21:14:27 2023
+Tue Nov  7 17:33:08 2023

@@ -1,4 +1,13 @@
-# Определение персонажей игры.
+# Определение персонажей игры
+
+# define gg = Character('???', color="#5a11ad")
+# define ch = Character('Чревоугодие', color="#1ab85e")
+# define len = Character('Лень', color="#c4149b")
+# define jad = Character('Жадность', color="#f7b707")
+# define pox = Character('Похоть', color="#144fd9")
+# define gnev = Character('Гнев', color="#1cc7b6")
+# define gor = Character('Гордыня', color="#bf0d0d")
+# define zav = Character('Зависть', color="#25a8cc")
 
 # Задаётся изначальная позиция персонажей
 init:
@@ -44,7 +53,7 @@ label start:
 label final1:
     "Поздравляю, вы открыли первую концовку!"
 
-    return
+    jump start
 
 label final2:
     "Поздравляю, вы открыли вторую концовку!"
