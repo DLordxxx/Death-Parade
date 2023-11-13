@@ -1,13 +1,13 @@
 # Определение персонажей игры
 
-# define gg = Character('???', color="#5a11ad")
-# define ch = Character('Чревоугодие', color="#1ab85e")
-# define len = Character('Лень', color="#c4149b")
-# define jad = Character('Жадность', color="#f7b707")
-# define pox = Character('Похоть', color="#144fd9")
-# define gnev = Character('Гнев', color="#1cc7b6")
-# define gor = Character('Гордыня', color="#bf0d0d")
-# define zav = Character('Зависть', color="#25a8cc")
+define gg = Character('???', color="#5a11ad") #фиол
+define ch = Character('Чревоугодие', color="#FF6600") #оранж
+define le = Character('Лень', color="#00bfff") #голуб
+define jad = Character('Жадность', color="#ccff00") #шартрез
+define pox = Character('Похоть', color="#c4149b") #роза
+define gn = Character('Гнев', color="#bf0d0d") #крас
+define gor = Character('Гордыня', color="#FEb7F0") #цвет испуганой нимфы+b
+define zav = Character('Зависть', color="#5353ec") #лазурь
 
 # Задаётся изначальная позиция персонажей
 init:
@@ -39,7 +39,7 @@ label start:
     $ menu_timer_onoff=True
 
     menu:
-        "Выбор?"
+        ch "Выбор?"
 
         "1":
             "Вы выбрали первый вариант"
@@ -51,12 +51,12 @@ label start:
             jump final2
 
 label final1:
-    "Поздравляю, вы открыли первую концовку!"
+    gg "Поздравляю, вы открыли первую концовку!"
 
     jump start
 
 label final2:
-    "Поздравляю, вы открыли вторую концовку!"
+    gg "Поздравляю, вы открыли вторую концовку!"
 
     return
 
