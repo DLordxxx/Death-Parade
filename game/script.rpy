@@ -11,7 +11,7 @@ define zav = Character('Зависть', color="#5353ec") #лазурь
 define dvor = Character('Дворецкий', color="#5353ec") #лазурь
 
 # Музыка и звуки
-# define audio.glazaout = "music/glazaout.ogg"
+define audio.glazaout = "music/glazaout.ogg"
 
 # Задаётся изначальная позиция персонажей
 init:
@@ -60,11 +60,11 @@ label start:
     Этот отель по своей сути необычный – люди, прибывшие сюда могут очиститься как физически, так и духовно
     '''
 #(гудок от фуры) (флешка)
-    # play music glazaout
+    play music glazaout
     scene black with off
     pause 1.0
     scene bg test with onn
-    # stop music fadeout 3
+    stop music fadeout 3
 
     '''
     Резкие воспоминания возникают у гг и он не может до конца осознать случившегося
@@ -76,11 +76,11 @@ label start:
     Слышно лишь тёплую кровь, капающую на белоснежную дорогу
     '''
 #затемнение-кружок
-    # play music glazaout
+    play music glazaout
     scene black with off
     pause 1.0
     scene bg lift with onn
-    # stop music fadeout 3
+    stop music fadeout 3
 
     dvor '''
     Советую посетить первый этаж, там можно отведать вкуснейшие блюда.
