@@ -26,6 +26,10 @@ label splashscreen:
     scene zastavka with fade
     pause(2)
     scene black with fade
+    pause(0.5)
+    scene zastavka2 with fade
+    pause(2)
+    scene black with fade
     return
 
 # Игра начинается здесь:
