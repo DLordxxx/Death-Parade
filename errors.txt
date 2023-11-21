@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 408: choice menuitem expects a non-empty block.
-    "":
-       ^
+File "game/script.rpy", line 547: expected 'label_name' not found.
+    jump 
+        ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Sun Nov 19 05:24:09 2023
+Tue Nov 21 21:25:25 2023
