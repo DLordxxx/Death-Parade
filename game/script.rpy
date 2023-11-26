@@ -1,21 +1,40 @@
 # Определение персонажей игры
 
 define gg = Character('???', color="#5a11ad") #фиол
+
+
 define ch = Character('Чревоугодие', color="#FF6600") #оранж
+
+
 define le = Character('Лень', color="#00bfff") #голуб
+
+
 define jad = Character('Жадность', color="#ccff00") #шартрез
+
+
 define pox = Character('Похоть', color="#c4149b") #роза
+
+
 define gn = Character('Гнев', color="#bf0d0d") #крас
+
+
 define gor = Character('Гордыня', color="#FEb7F0") #цвет испуганой нимфы+b
+
+
 define zav = Character('Зависть', color="#5353ec") #лазурь
-define dvor = Character('Дворецкий', color="#5353ec") #лазурь
+define dvor = Character('Дворецкий', color="#5353ec")
 
 #Запоминающие действия
 define beryshi = False
+define snova = False
 
 # Музыка и звуки
 define audio.glazaout = "music/glazaout.ogg"
 define audio.sbil = "sound/sbil.ogg"
+define audio.fon = "music/fon.mp3"
+define audio.doroga = "music/doroga.mp3"
+define audio.fon2 = "music/fon2.mp3"
+
 # Задаётся изначальная позиция персонажей
 init:
     $ left = Position(xalign=0.2)
@@ -42,7 +61,7 @@ label start:
     stop music fadeout 1
     scene bg lift
     with fade
-
+    play music fon
     dvor '''
     Приветствую вас в нашем отеле «Peccatum Mortale»!
 
@@ -64,18 +83,22 @@ label start:
 
     Позвольте мне немного вас просветить. Этот отель по своей сути необычный – люди, прибывшие сюда могут очиститься как физически, так и духовно
     '''
+    stop music fadeout 1
 #(гудок от фуры) (флешка)
     play music glazaout
     scene black with off
     pause 1.0
-    scene bg q with onn
+    scene bg machine with onn
     stop music fadeout 3
+
+    play music doroga
 
     '''
     Всплывают резкие воспоминания…
 
     Яркий свет фар и громкий шум от гудка надвигающейся фуры, которую уже ничто не остановит.
     '''
+    stop music fadeout 1
     play sound sbil
     '''
     Удар.
@@ -88,7 +111,7 @@ label start:
     pause 1.0
     scene bg lift with onn
     stop music fadeout 3
-
+    play music fon
     dvor '''
     Советую посетить первый этаж, там можно отведать вкуснейшие блюда.
 
@@ -99,9 +122,10 @@ label start:
     '''Лифт поднимается с цокольного на первый'''
 
 # РЕЦЕПЦИЯ
-
+    stop music fadeout 1
     scene bg recheznia
     with fade
+    play music fon2
 
     gg '''
     Здесь кто-нибудь есть?
@@ -127,7 +151,7 @@ label start:
             "Оставив листочек, он направился в ресторан"
 
 #первый этаж, ЧРЕВОУГОДИЕ
-
+    stop music fadeout 1
     scene bg restaurant
     with fade
 
@@ -455,14 +479,15 @@ label restaurant:
                                     ch "Вы уверены, что съедите все?"
                                     jump restaurant
 
-#Вернулся в лифт
+#ЛИФТ-РАЗГОВОРЫ
 label skip1:
     scene black
     with fade
     "Возвращается к лифту"
+    play music fon
     scene bg lift
     with fade
-    gg "Тот молодой господин, в ресторане, был несколько странным. вы знакомы с ним?"
+    gg "Тот молодой господин, в ресторане, был несколько странным. Вы знакомы с ним?"
     dvor '''
     Вряд ли. *небольшая улыбка на лице*
 
@@ -479,6 +504,7 @@ label skip1:
 
 #второй этаж, ЛЕНЬ
 label lenb:
+    stop music fadeout 1
     scene bg lenb
     with fade
     '''
@@ -488,6 +514,9 @@ label lenb:
 
     На одном из них расположился джентльмен, не отводящий взгляда от вычурных произведений искусства.
     '''
+    if snova:
+        le "Снова вы? Ну как, выспались?"
+        jump yshel
     le "Неужели вам хочется бегать, словно тушканчик, по этажам?"
     gg "Что вы имеете в виду?"
     le '''
@@ -540,31 +569,67 @@ label yshel:
     gg "Что там?"
     le "В отеле всегда царит шум, но на моем этаже целыми сутками тишина, потому возьми с собой эти беруши. Уверен, позже они тебе понадобятся."
     gg "Вы крайне добры."
-    
+
     #ЗАПОМИНАЮЩЕЕ ДЕЙСТВИЕ
     $ beryshi = True
     jump skip3
 
+#Решил полежать
 label ostalsa:
     gg "И вправду, думаю, отдых мне не помешает"
     scene black
     with fade
     gg "Кажется, где-то это я уже слышал"
+
+    #ЗАПОМИНАЮЩЕЕ ДЕЙСТВИЕ
+    $ snova = True
     scene bg restaurant
     with fade
     jump restaurant
 
+#ЛИФТ-РАЗГОВОРЫ
 label skip3:
     scene bg lift
     with fade
+    play music fon
     dvor "Ох, вы уже здесь… Не захотелось составить компанию нашему замечательному постояльцу со второго этажа? "
     gg "Нет, он несколько странный."
     dvor "Вероятно, вы правы. *хмурится*"
     gg "Будьте любезны, на третий."
     dvor "Как вам будет угодно."
 
+#третий этаж, ЖАДНОСТЬ
 
+label jadnostb:
+    stop music fadeout 1
+    scene bg test
+    with fade
+    '''Громкая музыка из дальнего проигрывателя сильно бьет по ушам
 
+    Над ним склонился мужчина, отчаянно пытаясь починить его, но, кажется, все безнадежно
+    '''
+    gg "Здравс…"
+    jad "Черт побери, заткнись! Я не спал уже восемь ночей!"
+    gg "Я подумал вам нужна помощь..."
+    jad "Себе помоги, мальчонка!"
+    gg "Почему вы мне грубите? Я ведь к вам с добрыми намерениями"
+    jad "Ну и с чем ты мне поможешь?"
+    gg "Кажется, у меня есть важная вещь для тебя, которая понадобиться в такой шумной атмосфере"
+    # Развилка
+    menu:
+        "*достает беруши*"
+
+        "Отдать":
+            jump otdal
+
+        "Оставить себе":
+            jump sebe
+
+label otdal:
+    "dadada"
+
+label sebe:
+    "nonono"
 # label test:
 #     "бла бла"
 #     if beryshi:
