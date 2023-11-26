@@ -19,4 +19,4 @@ ScriptError: could not find label 'sebe'.
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 Death Parade 1.0
-Sun Nov 26 23:47:20 2023
+Sun Nov 26 23:55:53 2023

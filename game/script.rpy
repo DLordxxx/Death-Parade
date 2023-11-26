@@ -626,10 +626,15 @@ label jadnostb:
             jump sebe
 
 label otdal:
-    "dadada"
+    "первый вариант"
 
+    jump skip4
 label sebe:
-    "nonono"
+    "второй вариант"
+    jump skip4
+
+label skip4:
+    "тук тук"
 # label test:
 #     "бла бла"
 #     if beryshi:
