@@ -2,57 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 492: expected statement.
-    as "Снова вы? Ну как, выспались?"
-    ^
-
-File "game/script.rpy", line 525: expected statement.
-    as"Неужели вам хочется бегать, словно тушканчик, по этажам?"
-    ^
-
-File "game/script.rpy", line 527: expected statement.
-(Perhaps you left out a ' at the end of the first line.)
-    as'''
-    ^
-        Чуточку отдыха никому не помешает.
-    
-        Я сижу здесь порядка двух сотен лет, избегая всякую суету.
-    
-        Вы в самом деле думаете, что я несчастен?
-        '''
-
-File "game/script.rpy", line 536: expected statement.
-    as"Бросьте, милостивый. Разве вам здесь не нравится?"
-    ^
-
-File "game/script.rpy", line 538: expected menuitem
-    as"Вечное спокойствие, тишина, не надо никуда лишний раз бегать…"
-    ^
-
-File "game/script.rpy", line 548: expected statement.
-    as"Вы не понимаете, что теряете!"
-    ^
-
-File "game/script.rpy", line 554: expected statement.
-    as"Таких удобств вам более нигде не отыскать, поверьте на слово!"
-    ^
-
-File "game/script.rpy", line 566: expected statement.
-    as"*вздох* Смею предположить, что вам претит моя компания."
-    ^
-
-File "game/script.rpy", line 568: expected statement.
-(Perhaps you left out a ' at the end of the first line.)
-    as'''
-    ^
-        В любом случае мне было приятно с вами повстречаться.
-    
-        Примите небольшой презент в знак признательности за наше мимолетное знакомство.
-        '''
-
-File "game/script.rpy", line 575: expected statement.
-    as"В отеле всегда царит шум, но на моем этаже целыми сутками тишина, потому возьми с собой эти беруши. Уверен, позже они тебе понадобятся."
-    ^
+File "game/script.rpy", line 925: choice menuitem expects a non-empty block.
+    "Грубо":
+            ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Mon Dec  4 20:18:18 2023
+Mon Dec  4 23:46:39 2023

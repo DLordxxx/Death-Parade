@@ -28,7 +28,7 @@ define dvor = Character('Дворецкий', color="#5353ec")
 define beryshi = False
 define snova = False
 define vajno1 = False
-
+define vajno2 = False
 # Музыка и звуки
 define audio.glazaout = "music/glazaout.ogg"
 define audio.sbil = "sound/sbil.ogg"
@@ -63,7 +63,7 @@ label start:
     scene bg lift
     with fade
     play music fon
-    
+
     dvor '''
     Приветствую вас в нашем отеле «Mortiferum Hotel»!
 
@@ -747,7 +747,7 @@ label dialog2:
 ### РОМАНТИЧЕСКАЯ КОНЦОВКА (ОСТАЛСЯ В ЗАТОЧЕНИИ У ЖЕНЩИНЫ)
 label romantic:
     window hide
-    scene bg wedding
+    scene poster wedding
     with fade
     pause
     "Девушка добился своего и теперь у нее есть достойный мужчина"
@@ -770,8 +770,170 @@ label dialog3:
     with fade
     "*нажимает на кнопку пятого этажа*"
 
+#пятый этаж, ГНЕВ
+label gnev:
+    stop music
+    scene bg gnev
+    with fade
+    "Описание этажа"
+    gg "Интересно, куда ведут эти двери?"
+    ai "Эй, мужик!"
+    gg "Простите, не заметил…"
+    ai "Смотри куда прешь!"
+    gg "Прошу быть более спокойным."
+    ai '''Думаешь, если ты такой добрый и хороший, то тебе все дозволено.
+
+    Я тебе сейчас покажу что значит «быть спокойным»
+    '''
+    '''*гнев достает нож*
+
+    *начинает ускорять шаг*
+    '''
+
+#ПЕРВЫЙ ВЫБОР (ЛАБИРИНТ)
+label labirint1:
+    # Объявляется таймер
+    $ timez = 100
+    $ time_range = 100
+    $ marker = "no_choice"
+    $ menu_timer_onoff=True
+
+    menu:
+        gg "Нельзя ошибаться…"
+
+        "Налево":
+            "*заперто*"
+            jump labirint1
+        "Прямо":
+            gg "Одна есть"
+            jump labirint2
+        "Направо":
+            "*заперто*"
+            jump labirint1
+
+#ВТОРОЙ ВЫБОР (ЛАБИРИНТ)
+label labirint2:
+    $ timez = 100
+    $ time_range = 100
+    $ marker = "no_choice"
+    $ menu_timer_onoff=True
+
+    menu:
+        gg "Нельзя ошибаться…"
+
+        "Налево":
+            "*заперто*"
+            jump labirint2
+        "Прямо":
+            "*заперто*"
+            jump labirint2
+        "Направо":
+            "Еще немного"
+            jump labirint3
 
 
+#ТРЕТИЙ ВЫБОР (ЛАБИРИНТ)
+label labirint3:
+    $ timez = 100
+    $ time_range = 100
+    $ marker = "no_choice"
+    $ menu_timer_onoff=True
+
+    menu:
+        gg "Нельзя ошибаться…"
+
+        "Налево":
+            "*заперто*"
+            jump labirint3
+        "Прямо":
+            "*заперто*"
+            jump labirint3
+        "Направо":
+            "Последняя..."
+            $ menu_timer_onoff=False
+            jump exit
+
+label no_choice:
+    scene black
+    with fade
+    gg "Кажется, у меня потемнело в глазах"
+    "*теряет сознание*"
+    #УПАЛ
+    ### КОНЦОВКА-СМЕРТЬ
+    window hide
+    scene poster death
+    with fade
+    pause
+    "Всех ждет один конец..."
+    $ persistent.ending2 = True
+    return
+
+#ВЫШЕЛ ИЗ ЛАБИРИНТА (EXIT)
+label exit:
+    scene black
+    with fade
+    gg "Фух, оторвался…"
+    "*идет к лифту*"
+
+    scene bg lift
+    with fade
+    play music fon
+    dvor '''Все в порядке?
+
+    Выглядите неважно.
+    '''
+    gg '''Меня преследовал психопат.
+
+    Почему вы с этим ничего не делаете.
+    '''
+    dvor '''Странно, такого не наблюдалось.
+
+    Впрочем, я не могу ничего с этим поделать.
+    '''
+
+#шеестой этаж, ГОРДЫНЯ
+label gorbyz:
+    stop music
+    scene bg test
+    with fade
+    bia "Опять эти невежды."
+    gg "Что простите?"
+    bia "Почему меня всегда окружают существа похожие на людей..."
+    gg "Вам не кажется, что начинать диалог с оскорбления, считается плохим тоном."
+    bia '''Возможно, вы неправильно меня поняли...
+
+    Для меня уважение к собеседнику является неотъемлемой частью диалога, но вы не похожи на джентльмена.
+    '''
+    gg "Давайте не будем ссориться."
+    bia '''«Ссоры» раскрывают мой потенциал находиться в высшем обществе.
+
+    Такому плебею как вы этого не понять.
+    '''
+    menu:
+        bia "Меня огорчает разделять с вами один воздух."
+
+        "Спокойно":
+            gg "Вы недалекий молодой человек и многого не знаете."
+            "еще"
+            bia '''Возможно, вы правы и мне нужно пересмотреть свое отношение к людям.
+
+            В качестве извинений могу сказать информацию, которая пригодится тебе в будущем.
+            '''
+            gg "/благодарность"
+            bia "/говорит шифр (можно намек на искупление греха)"
+            ### ВАЖНО
+            $ vajno2 = True
+            jump skip5
+
+        "Грубо":
+            gg "Я не потерплю оскорбления в свой адрес!"
+            bia "/ответка"
+            "бла-бла и ушел"
+            jump skip5
+label skip5:
+    if vajno2:
+        "qqqqqqq"
+    "qeqer"
 # label test:
 #     "бла бла"
 #     if beryshi:
@@ -782,12 +944,7 @@ label dialog3:
 
 
 
-# Объявляется таймер
-#     $ timez = 100
-#     $ time_range = 100
-#     $ marker = "no_choice"
-#     $ menu_timer_onoff=True
-#
+
 #     menu:
 #         gul"Выбор?"
 #
