@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 925: choice menuitem expects a non-empty block.
-    "Грубо":
-            ^
+File "game/script.rpy", line 1015: choice menuitem expects a non-empty block.
+    "Переродиться":
+                   ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Mon Dec  4 23:46:39 2023
+Tue Dec  5 01:20:25 2023

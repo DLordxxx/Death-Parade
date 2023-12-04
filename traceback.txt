@@ -1,30 +1,48 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 855, in script
-    scene black screen
-Exception: Image 'black' does not accept attributes 'screen'.
+  File "game/script.rpy", line 900, in script
+    gg "Что простите?"
+IndexError: list index out of range
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 855, in script
-    scene black screen
-  File "renpy/ast.py", line 1328, in execute
-    show_imspec(self.imspec, atl=getattr(self, "atl", None))
-  File "renpy/ast.py", line 1167, in show_imspec
-    atl=atl)
-  File "renpy/exports.py", line 742, in show
-    if not base.find_target() and renpy.config.missing_show:
-  File "renpy/display/image.py", line 409, in find_target
-    self.target = target._duplicate(a)
-  File "renpy/display/core.py", line 390, in _duplicate
-    args.extraneous()
-  File "renpy/display/core.py", line 271, in extraneous
-    " ".join(self.args),
-Exception: Image 'black' does not accept attributes 'screen'.
+  File "game/script.rpy", line 900, in script
+    gg "Что простите?"
+  File "renpy/ast.py", line 721, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "renpy/exports.py", line 1419, in say
+    who(what, *args, **kwargs)
+  File "renpy/character.py", line 1249, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "renpy/character.py", line 901, in do_display
+    **display_args)
+  File "renpy/character.py", line 647, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "renpy/display/core.py", line 3325, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "renpy/display/core.py", line 3773, in interact_core
+    renpy.audio.audio.interact()
+  File "renpy/audio/audio.py", line 1209, in interact
+    periodic()
+  File "renpy/audio/audio.py", line 1162, in periodic
+    raise_(exc[0], exc[1], exc[2])
+  File "renpy/audio/audio.py", line 1140, in periodic_thread_main
+    periodic_pass()
+  File "renpy/audio/audio.py", line 1082, in periodic_pass
+    c.periodic()
+  File "renpy/audio/audio.py", line 437, in periodic
+    force_stop = self.context.force_stop or (renpy.game.preferences.mute.get(self.mixer, False) and self.stop_on_mute)
+  File "renpy/audio/audio.py", line 315, in get_context
+    mcd = renpy.game.context().music
+  File "renpy/game.py", line 246, in context
+    return contexts[index]
+IndexError: list index out of range
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 Mortiferum Hotel 1.0
-Mon Dec  4 23:27:47 2023
+Tue Dec  5 01:28:49 2023

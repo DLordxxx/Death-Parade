@@ -891,7 +891,7 @@ label exit:
     Впрочем, я не могу ничего с этим поделать.
     '''
 
-#шеестой этаж, ГОРДЫНЯ
+#шестой этаж, ГОРДЫНЯ
 label gorbyz:
     stop music
     scene bg test
@@ -930,44 +930,92 @@ label gorbyz:
             bia "/ответка"
             "бла-бла и ушел"
             jump skip5
+
+# СЦЕНА ПЕРЕД ЛИФТОМ
 label skip5:
-    if vajno2:
-        "qqqqqqq"
-    "qeqer"
-# label test:
-#     "бла бла"
-#     if beryshi:
-#         "Один предмет есть"
-#     else:
-#         "Пропустил LOL"
+    scene bg pered
+    with fade
+
+# ВЫБОР (ЦОКОЛЬНЫЙ ЭТАЖ)
+    menu:
+        gg "Интересно, куда исчез Дворецкий?"
+
+        "Цокольный этаж":
+            jump cokol
+
+        "Седьмой этаж":
+            jump zavistb
 
 
+# ЦОКОЛЬНЫЙ ЭТАЖ
+label cokol:
+    scene bg test
+    with fade
+    gg '''Просторная комнатка.
 
+    Может быть я здесь найду что-нибудь интересное.'''
+    "*находит шкатулку*"
+    # СЦЕНА ШКАТУЛКИ
+    if vajno1 and vajno2:
+        menu:
+            gg "Необходим пин-код..."
 
+            "12461":
+                #ALARM
+                jump skip6
+            "12562 *что-то знакомое*":
+                jump pravda
+            "12451":
+                #ALARM
+                jump skip6
+            "12361":
+                #ALARM
+                jump skip6
+    else:
+        menu:
+            gg "Необходим пин-код..."
 
-#     menu:
-#         gul"Выбор?"
-#
-#         "1":
-#             "Вы выбрали первый вариант"
-#
-#             jump final1
-#         "2":
-#             "Вы выбрали второй вариант"
-#
-#             jump final2
-#
-# label final1:
-#     gg "Поздравляю, вы открыли первую концовку!"
-#
-#     jump start
-#
-# label final2:
-#     gg "Поздравляю, вы открыли вторую концовку!"
-#
-#     return
-#
-# label no_choice:
-#     "Неудача"
+            "12461":
+                #ALARM
+                jump skip6
+            "12562":
+                jump pravda
+            "12451":
+                #ALARM
+                jump skip6
+            "12361":
+                #ALARM
+                jump skip6
+
+label pravda:
+    "Ты в лимбе, бро"
+    jump skip6
+
+label skip6:
+    scene bg pered
+    with fade
+    menu:
+        "Седьмой этаж":
+            jump zavistb
+
+#седьмой этаж, ЗАВИСТЬ
+label zavistb:
+    scene bg test
+    with fade
+    menu:
+        zav "Вот такие пироги"
+
+        #СМЕРТЬ
+        "Переродиться":
+            jump no_choice
+
+        #Реинкарнация
+        "Придаться забвению":
+            scene bg test
+            with fade
+            pause
+            "У меня получилось..."
+            $ persistent.ending3 = True
+            return
 
     return
