@@ -125,7 +125,7 @@ label start:
 
 # РЕЦЕПЦИЯ
     stop music fadeout 1
-    scene bg recheznia
+    scene bg recpcia
     with fade
     play music fon2
 
@@ -608,7 +608,7 @@ label skip3:
 
 label avanostb:
     stop music fadeout 1
-    scene bg test
+    scene bg jadnostb
     with fade
     '''Громкая музыка из дальнего проигрывателя сильно бьет по ушам.
 
@@ -894,7 +894,7 @@ label exit:
 #шестой этаж, ГОРДЫНЯ
 label gorbyz:
     stop music
-    scene bg test
+    scene bg gord
     with fade
     bia "Опять эти невежды."
     gg "Что простите?"
@@ -949,13 +949,16 @@ label skip5:
 
 # ЦОКОЛЬНЫЙ ЭТАЖ
 label cokol:
-    scene bg test
+    scene bg cokol
     with fade
     gg '''Просторная комнатка.
 
     Может быть я здесь найду что-нибудь интересное.'''
-    "*находит шкатулку*"
     # СЦЕНА ШКАТУЛКИ
+    scene bg skatylka
+    with fade
+    "*находит шкатулку*"
+
     if vajno1 and vajno2:
         menu:
             gg "Необходим пин-код..."
@@ -1000,10 +1003,10 @@ label skip6:
 
 #седьмой этаж, ЗАВИСТЬ
 label zavistb:
-    scene bg test
+    scene bg zavis
     with fade
     menu:
-        zav "Вот такие пироги"
+        zav "Вот такие пироги."
 
         #СМЕРТЬ
         "Переродиться":
@@ -1011,7 +1014,7 @@ label zavistb:
 
         #Реинкарнация
         "Придаться забвению":
-            scene bg test
+            scene bg zavis
             with fade
             pause
             "У меня получилось..."
