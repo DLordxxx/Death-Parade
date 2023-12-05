@@ -126,15 +126,15 @@ init python:
 
     g.button("ending1")
     g.condition("persistent.ending1")
-    g.image("poster happy end")
+    g.image("poster wedding")
 
     g.button("ending2")
     g.condition("persistent.ending2")
-    g.image("poster past")
+    g.image("poster death")
 
     g.button("ending3")
     g.condition("persistent.ending3")
-    g.image("poster mogila")
+    g.image("poster happy end")
 
     onn = ImageDissolve("eye.png", 3.0, 20, reverse=False)
     off = ImageDissolve("eye.png", 3.0, 20, reverse=True)
@@ -405,9 +405,9 @@ screen gallery():
         xfill True
         yfill True
 
-        add g.make_button("ending1", "posterm happy end", xalign=0.5, yalign=0.5, hover_border="images/poster/mini/ramka.png")
-        add g.make_button("ending2", "posterm past", xalign=0.5, yalign=0.5, hover_border="images/poster/mini/ramka.png")
-        add g.make_button("ending3", "posterm mogila", xalign=0.5, yalign=0.5, hover_border="images/poster/mini/ramka.png")
+        add g.make_button("ending1", "posterm wedding", xalign=0.5, yalign=0.5, hover_border="images/poster/mini/ramka.png")
+        add g.make_button("ending2", "posterm death", xalign=0.5, yalign=0.5, hover_border="images/poster/mini/ramka.png")
+        add g.make_button("ending3", "posterm happy end", xalign=0.5, yalign=0.5, hover_border="images/poster/mini/ramka.png")
         null
         null
         null

@@ -1018,7 +1018,9 @@ label zavistb:
             with fade
             pause
             "У меня получилось..."
+            ### КОНЦОВКА HAPPY END
             $ persistent.ending3 = True
+
             return
 
     return
