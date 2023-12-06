@@ -29,12 +29,28 @@ define beryshi = False
 define snova = False
 define vajno1 = False
 define vajno2 = False
+
 # Музыка и звуки
 define audio.glazaout = "music/glazaout.ogg"
 define audio.sbil = "sound/sbil.ogg"
 define audio.fon = "music/fon.mp3"
 define audio.doroga = "music/doroga.mp3"
-define audio.fon2 = "music/fon2.mp3"
+define audio.pecepcia = "music/pecepcia.mp3"
+define audio.rest = "music/rest.mp3"
+define audio.lenb = "music/lenb.mp3"
+define audio.jad = "music/jad.mp3"
+define audio.polomka = "sound/polomka.mp3"
+define audio.pohot = "music/pohot.mp3"
+define audio.romantic = "music/romantic.mp3"
+define audio.gnev = "music/gnev.mp3"
+define audio.mogilamusic = "music/mogilamusic.mp3"
+define audio.vstrecha = "music/vstrecha.mp3"
+define audio.ypal = "sound/ypal.mp3"
+define audio.koroleva = "music/koroleva.mp3"
+define audio.taina = "music/taina.mp3"
+define audio.alarm = "music/alarm.mp3"
+define audio.zavistb = "music/zavistb.mp3"
+define audio.happyend = "music/happyend.mp3"
 
 # Задаётся изначальная позиция персонажей
 init:
@@ -127,7 +143,7 @@ label start:
     stop music fadeout 1
     scene bg recpcia
     with fade
-    play music fon2
+    play music pecepcia
 
     gg '''
     Здесь кто-нибудь есть?
@@ -156,7 +172,7 @@ label start:
     stop music fadeout 1
     scene bg restaurant
     with fade
-
+    play music rest
     gul'''
     Не желаете ли что-нибудь отведать?
     '''
@@ -486,10 +502,11 @@ label skip1:
     scene black
     with fade
     "Возвращается к лифту."
-
+    stop music fadeout 1
     if snova:
         scene bg lenb
         with fade
+        play music lenb
         asid"Снова вы? Ну как, выспались?"
         jump yshel
 
@@ -516,6 +533,7 @@ label lenb:
     stop music fadeout 1
     scene bg lenb
     with fade
+    play music lenb
     '''
     Фойе представляет собой небольшое пространство с тусклым светом, который едва ли освещает дюжину картин на стене.
 
@@ -576,6 +594,7 @@ label yshel:
     asid"В отеле всегда царит шум, но на моем этаже целыми сутками тишина, потому возьми с собой эти беруши. Уверен, позже они тебе понадобятся."
     gg "Вы крайне добры."
 
+    stop music fadeout 1
     #ЗАПОМИНАЮЩЕЕ ДЕЙСТВИЕ
     $ beryshi = True
     jump skip3
@@ -583,8 +602,10 @@ label yshel:
 #Решил полежать
 label ostalsa:
     gg "И вправду, думаю, отдых мне не помешает."
+    stop music fadeout 1
     scene black
     with fade
+    play music rest
     gg "Кажется, где-то это я уже слышал."
 
     #ЗАПОМИНАЮЩЕЕ ДЕЙСТВИЕ
@@ -610,6 +631,7 @@ label avanostb:
     stop music fadeout 1
     scene bg jadnostb
     with fade
+    play music jad
     '''Громкая музыка из дальнего проигрывателя сильно бьет по ушам.
 
     Над ним склонился мужчина, отчаянно пытаясь починить его, но, кажется, все безнадежно.
@@ -643,12 +665,15 @@ label sebe:
     gg "Кажется, у меня есть решение."
     "*начинает замахиваться*"
     # звук поломки
+    stop music fadeout 1
+    play sound polomka
     "*хрусь*"
     ava "Хм, интересно, почему я раньше до этого не догадался."
     jump skip4
 
 label skip4:
     ava "Спасибо тебе, теперь я наконец-то смогу проводить свое время в тишине и спокойствии у себя в логове."
+    stop music fadeout 1
 
     scene bg lift
     with fade
@@ -665,6 +690,7 @@ label pohotb:
     stop music fadeout 1
     scene bg pohot
     with fade
+    play music pohot
     "*комната усыпана свечами и лепестками роз на полу*"
     gg '''Романтично…
 
@@ -746,17 +772,20 @@ label dialog2:
 
 ### РОМАНТИЧЕСКАЯ КОНЦОВКА (ОСТАЛСЯ В ЗАТОЧЕНИИ У ЖЕНЩИНЫ)
 label romantic:
+    stop music fadeout 1
     window hide
     scene poster wedding
     with fade
+    play music romantic
     pause
-    "Девушка добился своего и теперь у нее есть достойный мужчина"
-
+    "Девушка добился своего и теперь у нее есть достойный мужчина."
+    stop music fadeout 1
     $ persistent.ending1 = True
     return
 
 #ПРОДОЛЖЕНИЕ ДИАЛОГА
 label dialog3:
+    stop music fadeout 1
     scene black
     with fade
     "*заходит в лифт*"
@@ -772,9 +801,10 @@ label dialog3:
 
 #пятый этаж, ГНЕВ
 label gnev:
-    stop music
+    stop music fadeout 1
     scene bg gnev
     with fade
+    play music vstrecha
     "Описание этажа"
     gg "Интересно, куда ведут эти двери?"
     ai "Эй, мужик!"
@@ -789,9 +819,11 @@ label gnev:
 
     *начинает ускорять шаг*
     '''
+    stop music fadeout 1
 
 #ПЕРВЫЙ ВЫБОР (ЛАБИРИНТ)
 label labirint1:
+    play music gnev
     # Объявляется таймер
     $ timez = 100
     $ time_range = 100
@@ -854,22 +886,30 @@ label labirint3:
             jump exit
 
 label no_choice:
+    stop music fadeout 1
     scene black
     with fade
+
     gg "Кажется, у меня потемнело в глазах"
-    "*теряет сознание*"
     #УПАЛ
+    play sound ypal
+    "*теряет сознание*"
+
     ### КОНЦОВКА-СМЕРТЬ
+    play music mogilamusic
+
     window hide
     scene poster death
     with fade
     pause
     "Всех ждет один конец..."
+    stop music fadeout 1
     $ persistent.ending2 = True
     return
 
 #ВЫШЕЛ ИЗ ЛАБИРИНТА (EXIT)
 label exit:
+    stop music fadeout 1
     scene black
     with fade
     gg "Фух, оторвался…"
@@ -893,9 +933,10 @@ label exit:
 
 #шестой этаж, ГОРДЫНЯ
 label gorbyz:
-    stop music
+    stop music fadeout 1
     scene bg gord
     with fade
+    play music koroleva
     bia "Опять эти невежды."
     gg "Что простите?"
     bia "Почему меня всегда окружают существа похожие на людей..."
@@ -922,6 +963,7 @@ label gorbyz:
             gg "/благодарность"
             bia "/говорит шифр (можно намек на искупление греха)"
             ### ВАЖНО
+            stop music fadeout 1
             $ vajno2 = True
             jump skip5
 
@@ -929,21 +971,24 @@ label gorbyz:
             gg "Я не потерплю оскорбления в свой адрес!"
             bia "/ответка"
             "бла-бла и ушел"
+            stop music fadeout 1
             jump skip5
 
 # СЦЕНА ПЕРЕД ЛИФТОМ
 label skip5:
     scene bg pered
     with fade
-
+    play music fon
 # ВЫБОР (ЦОКОЛЬНЫЙ ЭТАЖ)
     menu:
         gg "Интересно, куда исчез Дворецкий?"
 
         "Цокольный этаж":
+            stop music fadeout 1
             jump cokol
 
         "Седьмой этаж":
+            stop music fadeout 1
             jump zavistb
 
 
@@ -951,6 +996,7 @@ label skip5:
 label cokol:
     scene bg cokol
     with fade
+    play music taina
     gg '''Просторная комнатка.
 
     Может быть я здесь найду что-нибудь интересное.'''
@@ -965,14 +1011,26 @@ label cokol:
 
             "12461":
                 #ALARM
+                stop music fadeout 1
+                play music alarm
+                "*сработала сигнализация*"
                 jump skip6
+
             "12562 *что-то знакомое*":
                 jump pravda
+
             "12451":
                 #ALARM
+                stop music fadeout 1
+                play music alarm
+                "*сработала сигнализация*"
                 jump skip6
+
             "12361":
                 #ALARM
+                stop music fadeout 1
+                play music alarm
+                "*сработала сигнализация*"
                 jump skip6
     else:
         menu:
@@ -980,45 +1038,69 @@ label cokol:
 
             "12461":
                 #ALARM
-                jump skip6
-            "12562":
-                jump pravda
-            "12451":
-                #ALARM
-                jump skip6
-            "12361":
-                #ALARM
+                stop music fadeout 1
+                play music alarm
+                "*сработала сигнализация*"
                 jump skip6
 
+            "12562":
+                jump pravda
+
+            "12451":
+                #ALARM
+                stop music fadeout 1
+                play music alarm
+                "*сработала сигнализация*"
+                jump skip6
+
+            "12361":
+                #ALARM
+                stop music fadeout 1
+                play music alarm
+                "*сработала сигнализация*"
+                jump skip6
+
+# ОТЕЛЬ-ЛИМБ (ПРАВДА)
 label pravda:
+    scene bg chek
+    with fade
     "Ты в лимбе, бро"
     jump skip6
 
+# ПРОДОЛЖАЕМ
 label skip6:
+    stop music fadeout 1
     scene bg pered
     with fade
+    play music fon
     menu:
         "Седьмой этаж":
             jump zavistb
 
 #седьмой этаж, ЗАВИСТЬ
 label zavistb:
+    stop music fadeout 1
     scene bg zavis
     with fade
+    play music zavistb
     menu:
         zav "Вот такие пироги."
 
         #СМЕРТЬ
         "Переродиться":
+            stop music fadeout 1
             jump no_choice
 
         #Реинкарнация
         "Придаться забвению":
-            scene bg zavis
+            stop music fadeout 1
+            scene poster happy end
             with fade
+            play music happyend
             pause
             "У меня получилось..."
             ### КОНЦОВКА HAPPY END
+            stop music fadeout 1
             $ persistent.ending3 = True
 
             return
