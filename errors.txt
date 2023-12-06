@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 53: expected '=' not found.
-    define audio.happy end = "music/happy end.mp3"
-                       ^
-
-File "game/script.rpy", line 1099: expected end of line
-    play music happy end
-                     ^
+File "game/script.rpy", line 1114: if statement expects a non-empty block.
+    if was:
+           ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Wed Dec  6 17:05:35 2023
+Wed Dec  6 18:21:03 2023
