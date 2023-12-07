@@ -911,7 +911,7 @@ label no_choice:
     scene black
     with fade
 
-    gg "Кажется, у меня потемнело в глазах"
+    gg "Кажется, у меня потемнело в глазах..."
     #УПАЛ
     play sound ypal
     "*теряет сознание*"
