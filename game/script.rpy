@@ -202,9 +202,9 @@ label start:
     with fade
     play music rest
     show chrev norm:
-        zoom .9
+        zoom 1.2
         xalign 0.4
-        yalign 0.6
+        yalign 0.99
     with dissolve
     gul'''
     Не желаете ли что-нибудь отведать?
@@ -213,9 +213,9 @@ label start:
 label restaurant:
     #ВЫБРАТЬ ПРАВИЛЬНЫЙ ПОРЯДОК (2413)=(ГРЕХ)
     show chrev norm:
-        zoom .9
+        zoom 1.2
         xalign 0.99
-        yalign 0.6
+        yalign 0.99
     with move
     menu:
         gul"Нашим поварам под силу приготовить любое блюдо, которое вы пожелаете."
@@ -1004,16 +1004,16 @@ label pohotb:
     hide gg
     with dissolve
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.7
-        yalign 0.8
+        yalign 0.99
     with dissolve
     lux "Присаживайся ко мне на диванчик, красавчик."
     "*присел на край дивана*"
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.9
-        yalign 0.8
+        yalign 0.99
     with move
 #БЕЗ РАЗЛИВОК
     menu:
@@ -1041,14 +1041,14 @@ label true:
     hide gg
     with dissolve
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.9
-        yalign 0.8
+        yalign 0.99
     with dissolve
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.7
-        yalign 0.8
+        yalign 0.99
     with move
     lux "Что вы, не льстите себе."
     jump dialog1
@@ -1066,14 +1066,14 @@ label false:
     hide gg
     with dissolve
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.9
-        yalign 0.8
+        yalign 0.99
     with dissolve
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.7
-        yalign 0.8
+        yalign 0.99
     with move
     lux "Значит мне нужно узнать тебя поближе…"
     jump dialog1
@@ -1081,15 +1081,15 @@ label false:
 #ПРОДОЛЖЕНИЕ ДИАЛОГА
 label dialog1:
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.5
-        yalign 0.8
+        yalign 0.99
     with move
     "*девушка подсела ближе и нежно опустила руку на колено*"
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.1
-        yalign 0.8
+        yalign 0.99
     with move
     menu:
         lux "У такого мужчины как вы, должно быть, есть девушка?"
@@ -1106,14 +1106,14 @@ label dialog1:
             hide gg
             with dissolve
             show pohotb zovet:
-                zoom .24
+                zoom .26
                 xalign 0.1
-                yalign 0.8
+                yalign 0.99
             with dissolve
             show pohotb zovet:
-                zoom .24
+                zoom .26
                 xalign 0.5
-                yalign 0.8
+                yalign 0.99
             with move
             lux "Если ты “задержишься”, то у нас будет больше времени, чтобы раскрыть наши отношения."
             hide pohotb
@@ -1128,10 +1128,15 @@ label dialog1:
             with dissolve
             "*проскользнула ухмылка на ее лице*"
             show pohotb zovet:
-                zoom .24
+                zoom .26
                 xalign 0.5
-                yalign 0.8
+                yalign 0.99
             with dissolve
+            show pohotb zovet:
+                zoom .26
+                xalign 0.1
+                yalign 0.99
+            with move
             lux '''Разве тебе не хочется жить в большом доме с личным дворецким.
 
             Будешь наслаждаться жизнью припеваючи: в достатке, тепле, уюте и окутанный любовью.
@@ -1156,14 +1161,14 @@ label dialog2:
     hide gg
     with dissolve
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.1
-        yalign 0.8
+        yalign 0.99
     with dissolve
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.5
-        yalign 0.8
+        yalign 0.99
     with move
     lux "Как вы смотрите на то, чтобы провести незабываемый вечер в компании юной дамы."
     hide pohotb
@@ -1179,12 +1184,12 @@ label dialog2:
     hide gg
     with dissolve
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.5
-        yalign 0.8
+        yalign 0.99
     with dissolve
     show pohotb zovet:
-        zoom .24
+        zoom .26
         xalign 0.1
         yalign 0.99
     with move
@@ -1204,12 +1209,12 @@ label dialog2:
             hide gg
             with dissolve
             show pohotb zovet:
-                zoom .24
+                zoom .26
                 xalign 0.1
                 yalign 0.99
             with dissolve
             show pohotb zovet:
-                zoom .24
+                zoom .26
                 xalign 0.5
                 yalign 0.99
             with move
@@ -1233,12 +1238,12 @@ label dialog2:
             hide gg
             with dissolve
             show pohotb zovet:
-                zoom .24
+                zoom .26
                 xalign 0.1
                 yalign 0.99
             with dissolve
             show pohotb zovet:
-                zoom .24
+                zoom .26
                 xalign 0.5
                 yalign 0.99
             with move
